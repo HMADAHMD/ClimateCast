@@ -1,9 +1,4 @@
 import 'package:geolocator/geolocator.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
-import 'Networking.dart';
-
-//87940f818a9420b66221bc33b39a0611  API key
 
 class Location {
   double? Longitude;
@@ -17,8 +12,6 @@ class Location {
           desiredAccuracy: LocationAccuracy.low);
       Longitude = position.longitude;
       Latitude = position.latitude;
-      print(Longitude);
-      print(Latitude);
     } catch (e) {
       print(e);
     }
