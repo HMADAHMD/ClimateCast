@@ -28,8 +28,8 @@ class Search extends StatelessWidget {
             child: Center(
               child: TextFormField(
                 autocorrect: false,
-                decoration: InputDecoration(
-                    hintText: "search city",
+                decoration: const InputDecoration(
+                    hintText: "search city name",
                     prefixIcon: Icon(Icons.search),
                     suffixIcon: Icon(Icons.clear)),
                 onChanged: (value) {
@@ -50,7 +50,7 @@ class Search extends StatelessWidget {
                 Navigator.pop(context, cityName);
                 print("get weather");
               },
-              child: Text(
+              child: const Text(
                 "Get Weather",
                 style: TextStyle(color: Colors.black),
               ),

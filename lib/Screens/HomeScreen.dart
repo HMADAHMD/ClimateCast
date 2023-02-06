@@ -55,7 +55,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     await weatherinfo.getCityWeather(searchedCity);
                 updateUI(weatherInfo);
               },
-              icon: Icon(
+              icon: const Icon(
                 Icons.search,
                 color: Colors.black,
               ))
