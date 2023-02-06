@@ -1,4 +1,5 @@
 import 'package:climatecast/Functionality/Weather.dart';
+import 'package:climatecast/Screens/SearchCity.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -41,6 +42,24 @@ class _HomeScreenState extends State<HomeScreen> {
           style: TextStyle(color: Colors.black, fontSize: 23),
         ),
         backgroundColor: Color.fromARGB(255, 209, 255, 154),
+        actions: [
+          IconButton(
+              onPressed: () async {
+                print("search pressed");
+                var searchedCity = await Navigator.push(context,
+                    MaterialPageRoute(builder: (context) {
+                  return SearchCity();
+                }));
+
+                var weatherInfo =
+                    await weatherinfo.getCityWeather(searchedCity);
+                updateUI(weatherInfo);
+              },
+              icon: Icon(
+                Icons.search,
+                color: Colors.black,
+              ))
+        ],
       ),
       backgroundColor: Color.fromARGB(255, 246, 251, 239),
       body: Center(
