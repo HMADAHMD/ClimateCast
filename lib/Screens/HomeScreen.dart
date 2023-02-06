@@ -36,42 +36,74 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          "ClimKast",
-          style: TextStyle(color: Colors.black, fontSize: 23),
-        ),
-        backgroundColor: Color.fromARGB(255, 209, 255, 154),
-        actions: [
-          IconButton(
-              onPressed: () async {
-                print("search pressed");
-                var searchedCity = await Navigator.push(context,
-                    MaterialPageRoute(builder: (context) {
-                  return SearchCity();
-                }));
-
-                var weatherInfo =
-                    await weatherinfo.getCityWeather(searchedCity);
-                updateUI(weatherInfo);
-              },
-              icon: const Icon(
-                Icons.search,
-                color: Colors.black,
-              ))
-        ],
-      ),
-      backgroundColor: Color.fromARGB(255, 246, 251, 239),
       body: Center(
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
+        Padding(
+          padding: const EdgeInsets.fromLTRB(5, 70, 5, 10),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Container(
+                height: 60,
+                width: 60,
+                child: TextButton(
+                    onPressed: () async {
+                      var weatherInfo = await weatherinfo.getLocationWeather();
+                      updateUI(weatherInfo);
+                    },
+                    child: Icon(
+                      Icons.location_city,
+                      size: 35,
+                      color: Colors.black,
+                    )),
+              ),
+              Container(
+                height: 60,
+                width: 200,
+                child: const Center(
+                  child: Text(
+                    "Climkast",
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 30,
+                        fontWeight: FontWeight.w600),
+                  ),
+                ),
+              ),
+              Container(
+                height: 60,
+                width: 60,
+                child: Center(
+                  child: IconButton(
+                      onPressed: () async {
+                        print("search pressed");
+                        var searchedCity = await Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return SearchCity();
+                        }));
+
+                        var weatherInfo =
+                            await weatherinfo.getCityWeather(searchedCity);
+                        updateUI(weatherInfo);
+                      },
+                      icon: const Icon(
+                        Icons.search,
+                        color: Colors.black,
+                        size: 35,
+                      )),
+                ),
+              ),
+            ],
+          ),
+        ),
         Padding(
           padding: const EdgeInsets.all(15.0),
           child: Row(
             children: [
               Container(
                 decoration: BoxDecoration(
-                    color: Color.fromARGB(255, 254, 236, 234),
+                    color: Color.fromARGB(255, 234, 242, 254),
                     borderRadius: BorderRadius.circular(10)),
                 width: 165,
                 height: 250,
@@ -112,12 +144,6 @@ class _HomeScreenState extends State<HomeScreen> {
         SizedBox(
           height: 20,
         ),
-        ElevatedButton(
-            onPressed: () async {
-              var weatherInfo = await weatherinfo.getLocationWeather();
-              updateUI(weatherInfo);
-            },
-            child: Text("get current\nlocation"))
       ])),
     );
   }
