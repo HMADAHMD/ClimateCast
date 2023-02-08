@@ -16,9 +16,10 @@ class Search extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(primarySwatch: Colors.blue),
       home: Scaffold(
         appBar: AppBar(
-          backgroundColor: Color.fromARGB(255, 228, 247, 228),
+          backgroundColor: Color.fromARGB(255, 228, 243, 255),
           title: Container(
             width: double.infinity,
             height: 40,
@@ -45,19 +46,19 @@ class Search extends StatelessWidget {
             alignment: Alignment.topRight,
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(
-                  backgroundColor: Color.fromARGB(255, 227, 255, 229)),
+                  backgroundColor: Colors.blue[300], elevation: 0),
               onPressed: () {
                 Navigator.pop(context, cityName);
                 print("get weather");
               },
               child: const Text(
                 "Get Weather",
-                style: TextStyle(color: Colors.black),
+                style: TextStyle(color: Colors.white),
               ),
             ),
           ),
         ),
-      ),
+      ),debugShowCheckedModeBanner: false,
     );
   }
 }

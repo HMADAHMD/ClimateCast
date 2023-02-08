@@ -14,12 +14,12 @@ class _LoadingState extends State<Loading> {
   @override
   void initState() {
     super.initState();
-    getLocationData();
-  }
+    getLocationData(); //it is called because whenever the app
+  } //will run it gets updated right after starting.
 
   void getLocationData() async {
     try {
-      Weather myWeather = Weather();
+      Weather myWeather = Weather(); //creating obect of weather class
       var weatherData = await myWeather.getLocationWeather();
 
       Navigator.of(context).push(MaterialPageRoute(builder: ((context) {
@@ -47,9 +47,10 @@ class LoadScreen extends StatelessWidget {
       home: Scaffold(
           body: Center(
         child: SpinKitWanderingCubes(
-          color: Colors.green,
+          color: Colors.blue,
         ),
       )),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
